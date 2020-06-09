@@ -52,6 +52,7 @@ void loadxyfile(char *filename, int cmpfileflag){
         /* skip poorly formatted lines... */
         if (isalpha(line[0])) continue;
         if (sscanf(line, "%f %f", &xcmp[Ncmp], &ycmp[Ncmp]) == 2) {
+            fprintf(stderr,"READ substamps from %s:::: %d %f %f\n",filename,Ncmp,xcmp[Ncmp],ycmp[Ncmp]);
             Ncmp++;
         }
     }
@@ -478,6 +479,7 @@ double checkPsfCenter(float *iData, int imax, int jmax, int xLen, int yLen,
             dpt2   = iData[nr2];
             
             if (dpt2 >= hiThresh) {
+                printf("case saturated %d %d %g %g\n",xr2,yr2,dpt2, iData[nr2]);
                 mRData[nr2] |= bbit1;
                 brk = 1;
                 dmax2 = 0;

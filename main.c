@@ -856,9 +856,15 @@ int main(int argc,char *argv[]) {
                         
                         if (sstampFile) {
                             if (verbose >= 2) fprintf(stderr, "Adding centers manually\n");
+                               fprintf(stderr,"Limits:x::: %d %d\n",sXMin + hwKernel + 1,sXMax - hwKernel - 1);
+                               fprintf(stderr,"Limits:y::: %d %d\n",sYMin + hwKernel + 1,sYMax - hwKernel - 1);
                             for (m = 0; m < Ncmp; m++) {
-                                if ((xcmp[m] > sXMin + hwKernel + 1) && (xcmp[m] < sXMax - hwKernel - 1) &&
-                                    (ycmp[m] > sYMin + hwKernel + 1) && (ycmp[m] < sYMax - hwKernel - 1)) {
+                                /* if ((xcmp[m] > sXMin + hwKernel + 1) && (xcmp[m] < sXMax - hwKernel - 1) &&
+                                    (ycmp[m] > sYMin + hwKernel + 1) && (ycmp[m] < sYMax - hwKernel - 1)) { */
+                                if ((xcmp[m] > sXMin + 1) && (xcmp[m] < sXMax - 1) &&
+                                    (ycmp[m] > sYMin + 1) && (ycmp[m] < sYMax - 1)) {
+
+
                                     
                                     buildStamps(sXMin, sXMax, sYMin, sYMax, &niS, &ntS, 0, rXBMin, rYBMin,
                                                 ciStamps, ctStamps, iRData, tRData,
